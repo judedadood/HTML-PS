@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: yellow;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: black;
+    margin-top: 0;
+}
+
+/* Logo Style */
+.logo {
+    float: left;
+    margin-right: 20px;
+}
+
+/* Navigation Styles */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: yellow;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 19px 25px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li a:hover {
+    background-color: rgb(173, 173, 6);
+}
+
+/* Carousel Styles */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: black;
+    border-radius: 20px;
+}
+
+.carousel-item img {
+    height: 550px;
+}
+
+.singpass {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.singpass_btn {
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: red;
+    margin-right: 2vw;
+}
+
+.singpass_btn a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Section Styles */
+section {
+    text-align: center;
+    padding: 60px;
+}
+
+section p {
+    font-size: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    color: white;
+} 

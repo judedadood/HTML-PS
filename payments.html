@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Banking Digital Wallet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .account-balance {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 75, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .account-balance .card-info {
+            flex: 1;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            margin-bottom: 20px;
+        }
+
+        .card-info img {
+            border-radius: 3.2vw;
+            margin-top: 2vw;
+            width: 100%;
+            height: auto;
+            max-width: 100%; 
+            }
+
+        .account-balance .balance {
+            text-align: right;
+            margin-bottom: 2vw;
+            flex: 2;
+            font-size: 2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .account-balance .balance p {
+            font-size: 2.5vw;
+            margin: 0;
+        }
+
+        .account-balance .balance span {
+            font-size: 2vw;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .actions button {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 10px;
+            background-color: yellow;
+            color: #000;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .recent-transactions {
+            background-color: rgba(255, 255, 75, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .transaction {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid black;
+            padding: 10px 0;
+        }
+
+        .transaction p {
+            margin: 0;
+            flex: 1;
+            text-align: left;
+        }
+
+        .transaction .name {
+            text-align: left;
+            flex: 2;
+        }
+
+        .transaction .account,
+        .transaction .date,
+        .transaction .amount {
+            text-align: center;
+            flex: 1.5;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .completed {
+            background-color: green;
+            color: white;
+        }
+
+        .pending {
+            background-color: orange;
+            color: white;
+        }
+
+        .more {
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .more i {
+            transition: transform 0.3s;
+        }
+
+        .more.collapsed i {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .account-balance {
+                flex-direction: column;
+                align-items: center;
+            }
+
+.account-balance .balance {
+                margin-left: 0;
+                margin-right: 0;
+                text-align: center;
+                align-items: center;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions button {
+                width: 100%;
+                max-width: 300px;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <div class="logo"><a href="L8PS.html"><img src="images/logo.png" width="60px" height="60px"></a></div>
+        <li><a href="education.html">Financial Education</a></li>
+        <li><a href="budgeting.html">Budgeting Tools</a></li>
+        <li><a href="parental_controls.html">Parental Controls</a></li>
+        <li><a href="gamification.html">Games</a></li>
+        <li><a href="payments.html">Payments</a></li>
+        <li><a href="login.html">Profile & Settings</a></li>
+    </ul>
+</nav>
+<header>
+    <h1>Make Your Payment With Us!</h1>
+</header>
+<div class="container">
+    <main>
+        <section class="account-balance">
+            <div class="card-info">
+                <img src="images/card.png" width="310px" height="200px">
+            </div>
+            <div class="balance">
+                <p><b>Current Account Balance</b></p>
+                <div id="eyeicon" onclick="toggleBalance()">
+                    <p><i class="fa fa-eye" id="eye"></i></div>
+                    <br>
+                    <span id="balance-amount">S$ 12,345,678.90</span>
+                </p>
+            </div>
+        </section>
+        <section class="actions">
+            <div id="transfer">
+                <button>Transfer Money <i class="fa fa-random"></i></button>
+            </div>
+            <button><a href="limit.html">Set Transactions Limit <i class="fa fa-lock"></i></a></button>
+            <button><a href="https://templatelab.com/wp-content/uploads/2021/03/HSBC-Bank-Statement-TemplateLab.com_.jpg" target="_blank">Bank Statements <i class="fa fa-print"></i></a></button>
+        </section>
+        <section class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <div class="transaction">
+                <p>Mr Bean</p>
+                <p>Current Account</p>
+                <p>21-FEB-2021</p>
+                <p style="color:red">SGD -13.90</p>
+                <span class="status completed">COMPLETED</span>
+            </div>
+            <div class="transaction">
+                <p>Advice</p>
+                <p>Current Account</p>
+                <p>21-FEB-2021</p>
+                <p style="color:green">SGD +20.90</p>
+                <span class="status pending">PENDING</span>
+            </div>
+            <div class="transaction">
+                <p>7-Eleven</p>
+                <p>Current Account</p>
+                <p>16-FEB-2021</p>
+                <p style="color:red">SGD -10.90</p>
+                <span class="status completed">COMPLETED</span>
+            </div>
+            <div class="transaction">
+                <p>Shopee</p>
+                <p>Current Account</p>
+                <p>15-FEB-2021</p>
+                <p style="color:red">SGD -34.90</p>
+                <span class="status completed">COMPLETED</span>
+            </div>
+            <div id="extra-transactions" style="display: none;">
+                <div class="transaction">
+                    <p>McDonald's</p>
+                    <p>Current Account</p>
+                    <p>10-FEB-2021</p>
+                    <p style="color:red">SGD -5.00</p>
+                    <span class="status completed">COMPLETED</span>
+                </div>
+                <div class="transaction">
+                    <p>Starbucks</p>
+                    <p>Current Account</p>
+                    <p>05-FEB-2021</p>
+                    <p style="color:red">SGD -15.50</p>
+                    <span class="status completed">COMPLETED</span>
+                </div>
+            </div>
+            <div class="more collapsed" onclick="toggleTransactions()">View more <i class="fa fa-sort-up"></i></div>
+
+</section>
+    </main>
+</div>
+<footer>
+    <p>&copy; 2024 Youth Banking | Jerlene</p>
+</footer>
+
+<script>
+    document.getElementById("transfer").onclick = function() {
+       alert("Successfully transferred");
+    }
+
+    function toggleBalance() {
+        var eyeIcon = document.getElementById("eye");
+        var balanceAmount = document.getElementById("balance-amount");
+        if (eyeIcon.classList.contains("fa-eye")) {
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+            balanceAmount.textContent = "S$ **********";
+        } else {
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+            balanceAmount.textContent = "S$ 12,345,678.90";
+        }
+    }
+
+    function toggleTransactions() {
+        var extraTransactions = document.getElementById("extra-transactions");
+        var moreButton = document.querySelector(".more");
+        if (extraTransactions.style.display === "none") {
+            extraTransactions.style.display = "block";
+            moreButton.classList.remove("collapsed");
+            moreButton.innerHTML = 'View less <i class="fa fa-sort-up"></i>';
+        } else {
+            extraTransactions.style.display = "none";
+            moreButton.classList.add("collapsed");
+            moreButton.innerHTML = 'View more <i class="fa fa-sort-up"></i>';
+        }
+    }
+</script>
+</body>
+</html>
